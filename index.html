@@ -838,9 +838,8 @@ async function exportData() {
     if (navigator.share && navigator.canShare &&
         navigator.canShare({ files: [file] })) {
       await navigator.share({
-        files: [file],
-        title: 'Резервная копия ДонорТрекера'
-      });
+  files: [file]
+});
       showToast('Резервная копия готова');
     } else {
       const url = URL.createObjectURL(file);
