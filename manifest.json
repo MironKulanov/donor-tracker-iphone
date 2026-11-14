@@ -1,17 +1,15 @@
 {
-  "id": "./",
-  "name": "ДонорТрекер — Помощник донора крови",
+  "name": "ДонорТрекер",
   "short_name": "ДонорТрекер",
-  "description": "Учет донаций, отгулов и планирование следующих донаций",
+  "description": "Учет донаций крови и отгулов",
   "lang": "ru",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#f8fafc",
   "theme_color": "#dc2626",
   "icons": [
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
+    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png"}
   ]
 }
