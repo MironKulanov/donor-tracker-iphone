@@ -7,9 +7,7 @@
   <meta name="theme-color" content="#dc2626">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icons/icon-180.png">
-  <!-- Tailwind CSS -->
   <script src="./assets/tailwind.js"></script>
-  <!-- Lucide Icons -->
   <script src="./assets/lucide.min.js"></script>
   <style>
     body {
@@ -31,12 +29,8 @@
       z-index: 10;
       background: #dc2626;
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background: #cbd5e1;
       border-radius: 4px;
@@ -45,7 +39,6 @@
 </head>
 <body class="text-slate-800 pb-20 md:pb-8">
 
-  <!-- Header / Top Bar -->
   <header class="bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-md sticky z-30" style="top: env(safe-area-inset-top, 0px)">
     <div class="max-w-md mx-auto px-4 py-3.5 flex justify-between items-center">
       <div class="flex items-center gap-2.5">
@@ -71,7 +64,6 @@
 
   <main class="max-w-md mx-auto px-4 pt-4 space-y-4">
 
-    <!-- Tab Navigation -->
     <nav class="flex bg-slate-200/80 p-1 rounded-2xl text-xs font-semibold text-slate-600 shadow-inner">
       <button id="tab-btn-dash" onclick="switchTab('dash')" class="flex-1 py-2 rounded-xl transition-all duration-200 bg-white text-red-600 shadow-sm flex items-center justify-center gap-1.5">
         <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Главная
@@ -84,19 +76,14 @@
       </button>
     </nav>
 
-    <!-- Notification Alert -->
     <div id="toast" class="hidden bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-lg fixed bottom-20 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 max-w-xs w-full transition-opacity">
       <i data-lucide="info" class="w-4 h-4 text-red-400 shrink-0"></i>
       <span id="toast-message" class="flex-1 text-xs font-medium">Сообщение</span>
     </div>
 
-    <!-- TAB 1: DASHBOARD -->
     <section id="tab-dash" class="space-y-4">
-      
-      <!-- Off-days summary widget -->
       <div class="bg-gradient-to-br from-rose-500 to-red-600 rounded-3xl p-5 text-white shadow-lg shadow-red-500/20 relative overflow-hidden">
         <div class="absolute -right-4 -bottom-4 w-28 h-28 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-        
         <div class="flex justify-between items-start mb-3">
           <div>
             <span class="text-xs font-medium uppercase tracking-wider text-red-100">Доступно отгулов</span>
@@ -109,7 +96,6 @@
             <i data-lucide="minus-circle" class="w-4 h-4"></i> Списать
           </button>
         </div>
-
         <div class="grid grid-cols-2 gap-2 pt-3 border-t border-white/15 text-xs">
           <div class="flex items-center gap-2">
             <div class="p-1.5 bg-white/10 rounded-lg"><i data-lucide="arrow-down-left" class="w-3.5 h-3.5 text-emerald-300"></i></div>
@@ -128,7 +114,6 @@
         </div>
       </div>
 
-      <!-- Next Donation Timer -->
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
@@ -140,9 +125,7 @@
               <p class="text-xs text-slate-500" id="next-donation-subtext">Расчет интервала</p>
             </div>
           </div>
-          <span id="next-donation-badge" class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600">
-            Готово
-          </span>
+          <span id="next-donation-badge" class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600">Готово</span>
         </div>
         <div class="mt-2 pt-2 border-t border-slate-50 flex justify-between items-center text-xs">
           <span class="text-slate-500">Допустимая дата:</span>
@@ -150,7 +133,6 @@
         </div>
       </div>
 
-      <!-- Planned Donations -->
       <div id="planned-card" class="hidden bg-white rounded-2xl p-4 shadow-sm border border-dashed border-slate-300 space-y-3">
         <div class="flex justify-between items-center">
           <div class="flex items-center gap-2">
@@ -167,7 +149,6 @@
         <div id="planned-list" class="space-y-2"></div>
       </div>
 
-      <!-- Honor Donor Progress -->
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3">
         <div class="flex justify-between items-center">
           <div class="flex items-center gap-2">
@@ -181,11 +162,9 @@
           </div>
           <span id="honor-percent" class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-lg">0%</span>
         </div>
-
         <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
           <div id="honor-progress-bar" class="bg-gradient-to-r from-amber-400 to-amber-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
         </div>
-
         <div class="grid grid-cols-2 gap-2 text-xs pt-1">
           <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
             <span class="text-slate-500 block mb-0.5">Кровь / Тромб.</span>
@@ -196,13 +175,9 @@
             <span class="font-bold text-slate-800" id="count-plasma-stat">0 / 60</span>
           </div>
         </div>
-
-        <p class="text-[11px] text-slate-400 leading-tight italic" id="honor-rule-hint">
-          * Почетный донор: 40 донаций крови или 60 плазмы (либо их нормативная комбинация).
-        </p>
+        <p class="text-[11px] text-slate-400 leading-tight italic" id="honor-rule-hint">* Почетный донор: 40 донаций крови или 60 плазмы (либо их нормативная комбинация).</p>
       </div>
 
-      <!-- Action Buttons -->
       <div class="grid grid-cols-2 gap-2">
         <button onclick="openAddDonation('planned')" class="bg-white border border-red-200 text-red-600 hover:bg-red-50 active:scale-[0.99] py-3.5 rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 text-sm">
           <i data-lucide="calendar-plus" class="w-4 h-4"></i> Запланировать
@@ -211,12 +186,9 @@
           <i data-lucide="plus-circle" class="w-4 h-4"></i> Добавить
         </button>
       </div>
-
     </section>
 
-    <!-- TAB 2: HISTORY -->
     <section id="tab-history" class="space-y-3 hidden">
-      <!-- Filter controls -->
       <div class="flex items-center justify-between bg-white p-2 rounded-2xl border border-slate-100 shadow-sm text-xs">
         <span class="text-slate-500 pl-2 font-medium">Фильтр:</span>
         <div class="flex gap-1">
@@ -225,14 +197,9 @@
           <button onclick="filterHistory('plasma')" id="filter-plasma" class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:bg-slate-100 transition-colors">Плазма</button>
         </div>
       </div>
-
-      <!-- Donations list -->
-      <div id="donations-list" class="space-y-2.5">
-        <!-- Rendered dynamically -->
-      </div>
+      <div id="donations-list" class="space-y-2.5"></div>
     </section>
 
-    <!-- TAB 3: LEAVE DAYS LOG -->
     <section id="tab-leave" class="space-y-3 hidden">
       <div class="flex justify-between items-center px-1">
         <h3 class="font-bold text-slate-800 text-sm">История списания отгулов</h3>
@@ -240,16 +207,10 @@
           <i data-lucide="plus" class="w-4 h-4"></i> Списать отгул
         </button>
       </div>
-
-      <!-- Leave usage list -->
-      <div id="leave-list" class="space-y-2.5">
-        <!-- Rendered dynamically -->
-      </div>
+      <div id="leave-list" class="space-y-2.5"></div>
     </section>
-
   </main>
 
-  <!-- MODAL: ADD DONATION -->
   <div id="modal-add-donation" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 space-y-4 shadow-xl animate-in slide-in-from-bottom duration-200">
       <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -260,7 +221,6 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-
       <form id="form-add-donation" onsubmit="handleAddDonation(event)" class="space-y-3.5">
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Статус</label>
@@ -275,12 +235,10 @@
           <label class="block text-xs font-semibold text-slate-600 mb-1">Дата донации</label>
           <input type="date" id="donation-date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
         </div>
-
         <div id="donation-time-wrap" class="hidden">
           <label class="block text-xs font-semibold text-slate-600 mb-1">Время <span class="font-normal text-slate-400">(необязательно)</span></label>
           <input type="time" id="donation-time" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Вид донации</label>
           <select id="donation-type" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
@@ -290,17 +248,14 @@
             <option value="erythrocytes">Эритроциты</option>
           </select>
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Положено дней отдыха (ст. 186 ТК РФ)</label>
           <input type="number" id="donation-days" min="0" max="5" value="2" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Комментарий / Учреждение</label>
           <input type="text" id="donation-comment" placeholder="Например: Центр крови FMBA" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500">
         </div>
-
         <div class="pt-2">
           <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl shadow-lg shadow-red-600/20 transition-all text-sm">
             <span id="donation-submit">Сохранить донацию</span>
@@ -310,7 +265,6 @@
     </div>
   </div>
 
-  <!-- MODAL: USE LEAVE DAY -->
   <div id="modal-use-leave" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 space-y-4 shadow-xl animate-in slide-in-from-bottom duration-200">
       <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -321,42 +275,33 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-
       <form id="form-use-leave" onsubmit="handleUseLeave(event)" class="space-y-3.5">
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Дата использования</label>
           <input type="date" id="leave-date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500">
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Количество дней</label>
           <input type="number" id="leave-count" min="1" max="10" value="1" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500">
         </div>
-
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Примечание</label>
           <input type="text" id="leave-comment" placeholder="Например: К отпуску / День отдыха" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500">
         </div>
-
         <div class="pt-2">
-          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-xl shadow-lg shadow-amber-500/20 transition-all text-sm">
-            Подтвердить списание
-          </button>
+          <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-xl shadow-lg shadow-amber-500/20 transition-all text-sm">Подтвердить списание</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- JavaScript App Logic -->
   <script>
-    // State Management
     let state = {
       donations: [],
       leaves: [],
       currentFilter: 'all'
     };
 
-    // Dictionary for Russian translation
     const DONATION_NAMES = {
       blood: 'Цельная кровь',
       plasma: 'Плазма',
@@ -364,7 +309,6 @@
       erythrocytes: 'Эритроциты'
     };
 
-    // Mandatory Intervals in days
     const INTERVALS = {
       blood: 60,
       plasma: 14,
@@ -372,17 +316,14 @@
       erythrocytes: 60
     };
 
-    // ===== Даты и статусы донаций =====
     const DAY_MS = 24 * 60 * 60 * 1000;
 
-    // Сегодня по местному времени в формате YYYY-MM-DD (toISOString отдает UTC и может сдвинуть день)
     function todayStr() {
       const d = new Date();
       const pad = n => String(n).padStart(2, '0');
       return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
     }
 
-    // Разбор YYYY-MM-DD как местной даты (new Date('YYYY-MM-DD') считается UTC)
     function parseLocalDate(str) {
       const [y, m, d] = str.split('-').map(Number);
       return new Date(y, m - 1, d);
@@ -393,23 +334,19 @@
       return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
     }
 
-    // Запланированная донация наступила: дата прошла, но сдача еще не подтверждена
     function isDue(item) {
       if (item.status !== 'planned') return false;
       const today = todayStr();
       if (item.date !== today) return item.date < today;
-      // В день донации, если указано время, ждем его наступления
       return !item.time || nowTimeStr() >= item.time;
     }
 
-    // Текущее время в формате HH:MM
     function nowTimeStr() {
       const d = new Date();
       const pad = n => String(n).padStart(2, '0');
       return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
     }
 
-    // В отгулах, сроках и прогрессе почетного донора учитываются только подтвержденные донации
     function confirmedDonations() {
       return state.donations.filter(d => d.status !== 'planned');
     }
@@ -418,7 +355,6 @@
       return state.donations.filter(d => d.status === 'planned');
     }
 
-    // Приводим данные из localStorage или импорта к новому формату (старые записи считаются сданными)
     function normalizeState(s) {
       const donations = (Array.isArray(s.donations) ? s.donations : [])
         .map(d => ({ ...d, status: d.status === 'planned' ? 'planned' : 'done' }))
@@ -430,7 +366,6 @@
       };
     }
 
-    // Переключатель статуса в модальном окне
     function setDonationStatus(status) {
       const planned = status === 'planned';
       const on = 'bg-white text-red-600 shadow-sm';
@@ -451,7 +386,6 @@
       openModal('modal-add-donation');
     }
 
-    // Подтверждение донации, которую уже прошли
     function confirmDonation(id) {
       const item = state.donations.find(d => d.id === id);
       if (!item || !isDue(item)) return;
@@ -462,7 +396,6 @@
       }
     }
 
-    // Бейдж статуса в истории
     function donationStatusBadge(item) {
       if (item.status !== 'planned') return '';
       return isDue(item)
@@ -470,13 +403,143 @@
         : '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-500">Запланирована</span>';
     }
 
-    // Блок «Запланированные донации» на главной
+    // ===== ДОБАВЛЕНИЕ СОБЫТИЯ В КАЛЕНДАРЬ =====
+
+    function icsEscape(value) {
+      return String(value || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/\n/g, '\\n')
+        .replace(/,/g, '\\,')
+        .replace(/;/g, '\\;');
+    }
+
+    function icsLocalDate(date, time) {
+      return date.replace(/-/g, '') + 'T' + time.replace(':', '') + '00';
+    }
+
+    function icsUtcDate(date) {
+      return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    }
+
+    function foldIcsLine(line) {
+      const parts = [];
+      while (line.length > 70) {
+        parts.push(line.slice(0, 70));
+        line = ' ' + line.slice(70);
+      }
+      parts.push(line);
+      return parts.join('\r\n');
+    }
+
+    async function addDonationToCalendar(id) {
+      const item = state.donations.find(d => d.id === id);
+      if (!item || item.status !== 'planned') {
+        showToast('Запланированная донация не найдена');
+        return;
+      }
+
+      const title = 'Донация: ' + (DONATION_NAMES[item.type] || item.type);
+      const date = item.date;
+      const description = [
+        'Запланированная донация',
+        'Вид: ' + (DONATION_NAMES[item.type] || item.type),
+        item.time ? 'Время: ' + item.time : 'Время не указано',
+        item.comment ? 'Комментарий: ' + item.comment : ''
+      ].filter(Boolean).join('\n');
+
+      const eventStart = item.time
+        ? icsLocalDate(date, item.time)
+        : null;
+
+      const eventDate = parseLocalDate(date);
+      const reminderDate = new Date(eventDate);
+      reminderDate.setDate(reminderDate.getDate() - 1);
+      reminderDate.setHours(9, 0, 0, 0);
+
+      const now = new Date();
+      const stamp = icsUtcDate(now);
+      const reminderUtc = icsUtcDate(reminderDate);
+
+      const lines = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Donor Tracker//Donation Calendar//RU',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:donation-' + item.id + '@donor-tracker',
+        'DTSTAMP:' + stamp,
+        'SUMMARY:' + icsEscape(title),
+        'DESCRIPTION:' + icsEscape(description)
+      ];
+
+      if (eventStart) {
+        const start = new Date(eventDate);
+        const [hours, minutes] = item.time.split(':').map(Number);
+        start.setHours(hours, minutes, 0, 0);
+        const end = new Date(start.getTime() + 60 * 60 * 1000);
+        lines.push('DTSTART:' + icsUtcDate(start));
+        lines.push('DTEND:' + icsUtcDate(end));
+      } else {
+        const nextDay = new Date(eventDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+        const pad = n => String(n).padStart(2, '0');
+        const dateValue = d => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate());
+        lines.push('DTSTART;VALUE=DATE:' + dateValue(eventDate));
+        lines.push('DTEND;VALUE=DATE:' + dateValue(nextDay));
+      }
+
+      lines.push(
+        'BEGIN:VALARM',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:Завтра запланирована донация',
+        'TRIGGER;VALUE=DATE-TIME:' + reminderUtc,
+        'END:VALARM',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      );
+
+      const icsText = lines.map(foldIcsLine).join('\r\n') + '\r\n';
+      const file = new File(
+        ['\uFEFF' + icsText],
+        'donation-' + date + '.ics',
+        { type: 'text/calendar;charset=utf-8' }
+      );
+
+      try {
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: title,
+            text: 'Добавить запланированную донацию в календарь'
+          });
+          showToast('Выберите календарь и подтвердите событие');
+        } else {
+          const url = URL.createObjectURL(file);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = file.name;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 3000);
+          showToast('Файл календаря подготовлен. Откройте его для добавления события');
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          console.error('Calendar export error:', error);
+          showToast('Не удалось открыть календарь');
+        }
+      }
+    }
+
     function renderPlannedList() {
       const card = document.getElementById('planned-card');
       const list = plannedDonations().sort((a, b) => `${a.date} ${a.time || ''}`.localeCompare(`${b.date} ${b.time || ''}`));
       card.classList.toggle('hidden', list.length === 0);
       document.getElementById('planned-count').innerText = list.length;
       const today = parseLocalDate(todayStr());
+
       document.getElementById('planned-list').innerHTML = list.map(item => {
         const due = isDue(item);
         const daysLeft = Math.round((parseLocalDate(item.date) - today) / DAY_MS);
@@ -491,7 +554,10 @@
                 ${due ? 'Ждёт подтверждения' : daysLeft === 0 ? `Сегодня${item.time ? ` в ${item.time}` : ''}` : `Через ${daysLeft} дн.`}
               </span>
             </div>
-            <div class="flex gap-2">
+            <div class="flex flex-wrap gap-2">
+              <button onclick="addDonationToCalendar(${item.id})" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-1">
+                <i data-lucide="calendar-plus" class="w-4 h-4"></i> Добавить в календарь
+              </button>
               ${due ? `<button onclick="confirmDonation(${item.id})" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 rounded-lg transition-colors">Подтвердить сдачу</button>` : ''}
               <button onclick="deleteDonation(${item.id})" class="px-3 py-2 text-xs font-semibold text-slate-500 hover:text-red-600 bg-slate-50 rounded-lg transition-colors">Отменить</button>
             </div>
@@ -499,14 +565,11 @@
       }).join('');
     }
 
-    // Обновляем экран при возврате на вкладку (на случай, если прошла полночь)
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) renderApp();
     });
-    // Обновляем статусы раз в минуту (запланированная донация может наступить во время работы)
     setInterval(renderApp, 60000);
 
-    // Initialize App
     window.onload = function() {
       loadState();
       setDefaultDates();
@@ -514,14 +577,12 @@
       lucide.createIcons();
     };
 
-    // Set today's date in forms
     function setDefaultDates() {
       const today = todayStr();
       document.getElementById('donation-date').value = today;
       document.getElementById('leave-date').value = today;
     }
 
-    // LocalStorage Load/Save
     function loadState() {
       const saved = localStorage.getItem('donor_tracker_data');
       if (saved) {
@@ -538,20 +599,17 @@
       renderApp();
     }
 
-    // Tab Navigation
     function switchTab(tab) {
       ['dash', 'history', 'leave'].forEach(t => {
         document.getElementById(`tab-${t}`).classList.add('hidden');
         const btn = document.getElementById(`tab-btn-${t}`);
         btn.className = "flex-1 py-2 rounded-xl transition-all duration-200 hover:text-slate-900 flex items-center justify-center gap-1.5 text-slate-600 font-medium";
       });
-
       document.getElementById(`tab-${tab}`).classList.remove('hidden');
       const activeBtn = document.getElementById(`tab-btn-${tab}`);
       activeBtn.className = "flex-1 py-2 rounded-xl transition-all duration-200 bg-white text-red-600 shadow-sm font-semibold flex items-center justify-center gap-1.5";
     }
 
-    // Modal Control
     function openModal(id) {
       document.getElementById(id).classList.remove('hidden');
     }
@@ -560,26 +618,22 @@
       document.getElementById(id).classList.add('hidden');
     }
 
-    // Toast Notifications
     function showToast(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-message').innerText = msg;
       toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3000);
+      setTimeout(() => toast.classList.add('hidden'), 3000);
     }
 
-    // Add Donation Logic
     function handleAddDonation(e) {
       e.preventDefault();
       const date = document.getElementById('donation-date').value;
       const type = document.getElementById('donation-type').value;
       const days = parseInt(document.getElementById('donation-days').value) || 0;
       const comment = document.getElementById('donation-comment').value.trim();
-
       const status = document.getElementById('donation-status').value;
       const time = status === 'planned' ? document.getElementById('donation-time').value : '';
+
       if (status === 'done' && date > todayStr()) {
         alert('Будущую донацию нельзя отметить как сданную. Выберите статус «Запланирована».');
         return;
@@ -596,39 +650,28 @@
       };
 
       state.donations.push(item);
-      // Sort by date descending
       state.donations.sort((a, b) => new Date(b.date) - new Date(a.date));
-
       saveState();
       closeModal('modal-add-donation');
       document.getElementById('donation-comment').value = '';
       showToast(status === 'planned' ? 'Донация запланирована' : 'Донация успешно добавлена!');
     }
 
-    // Use Leave Logic
     function handleUseLeave(e) {
       e.preventDefault();
       const date = document.getElementById('leave-date').value;
       const count = parseInt(document.getElementById('leave-count').value) || 1;
       const comment = document.getElementById('leave-comment').value.trim();
 
-      const item = {
-        id: Date.now(),
-        date,
-        count,
-        comment
-      };
-
+      const item = { id: Date.now(), date, count, comment };
       state.leaves.push(item);
       state.leaves.sort((a, b) => new Date(b.date) - new Date(a.date));
-
       saveState();
       closeModal('modal-use-leave');
       document.getElementById('leave-comment').value = '';
       showToast('Отгул успешно списан!');
     }
 
-    // Delete Operations
     function deleteDonation(id) {
       if (confirm('Удалить эту запись о донации?')) {
         state.donations = state.donations.filter(d => d.id !== id);
@@ -645,21 +688,17 @@
       }
     }
 
-    // Filter History
     function filterHistory(type) {
       state.currentFilter = type;
       ['all', 'blood', 'plasma'].forEach(t => {
         const btn = document.getElementById(`filter-${t}`);
-        if(t === type) {
-          btn.className = "px-3 py-1.5 rounded-xl font-medium bg-red-50 text-red-600 transition-colors";
-        } else {
-          btn.className = "px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:bg-slate-100 transition-colors";
-        }
+        btn.className = t === type
+          ? "px-3 py-1.5 rounded-xl font-medium bg-red-50 text-red-600 transition-colors"
+          : "px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:bg-slate-100 transition-colors";
       });
       renderHistoryList();
     }
 
-    // Main Render Pipeline
     function renderApp() {
       renderStats();
       renderHistoryList();
@@ -668,9 +707,7 @@
       lucide.createIcons();
     }
 
-    // Render Stats & Metrics
     function renderStats() {
-      // 1. Leave Days Calculations
       const earned = confirmedDonations().reduce((acc, d) => acc + (d.daysEarned || 0), 0);
       const used = state.leaves.reduce((acc, l) => acc + (l.count || 0), 0);
       const remaining = earned - used;
@@ -679,18 +716,16 @@
       document.getElementById('stat-used-days').innerText = `${used} дн.`;
       document.getElementById('stat-remaining-days').innerText = remaining;
 
-      // 2. Next Donation Calculation
       const confirmed = confirmedDonations();
       if (confirmed.length > 0) {
-        const last = confirmed[0]; // sorted descending
+        const last = confirmed[0];
         const lastDate = parseLocalDate(last.date);
         const interval = INTERVALS[last.type] || 60;
-        
         const nextDate = new Date(lastDate);
         nextDate.setDate(nextDate.getDate() + interval);
 
         const today = new Date();
-        today.setHours(0,0,0,0);
+        today.setHours(0, 0, 0, 0);
 
         const formattedNext = nextDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
         document.getElementById('next-donation-date').innerText = formattedNext;
@@ -712,16 +747,12 @@
         document.getElementById('next-donation-subtext').innerText = "Нет подтверждённых донаций";
       }
 
-      // 3. Honor Donor Progress
       const bloodCount = confirmedDonations().filter(d => d.type === 'blood' || d.type === 'platelets' || d.type === 'erythrocytes').length;
       const plasmaCount = confirmedDonations().filter(d => d.type === 'plasma').length;
 
       document.getElementById('count-blood-stat').innerText = `${bloodCount} / 40`;
       document.getElementById('count-plasma-stat').innerText = `${plasmaCount} / 60`;
 
-      // Calculation rules for Honor Donor (PDRF):
-      // Blood >= 40 OR Plasma >= 60 OR Combination:
-      // (Blood >= 25 -> Total >= 40) OR (Blood < 25 -> Total >= 60)
       let percentage = 0;
       if (bloodCount >= 40 || plasmaCount >= 60) {
         percentage = 100;
@@ -737,7 +768,6 @@
       document.getElementById('honor-progress-bar').style.width = `${percentage}%`;
     }
 
-    // Render History List
     function renderHistoryList() {
       const container = document.getElementById('donations-list');
       container.innerHTML = '';
@@ -754,13 +784,12 @@
           <div class="text-center py-8 bg-white rounded-2xl border border-slate-100 text-slate-400">
             <i data-lucide="inbox" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
             <p class="text-xs">Записей донаций пока нет</p>
-          </div>
-        `;
+          </div>`;
         return;
       }
 
       list.forEach(item => {
-        const dateFormatted = new Date(item.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) + (item.time ? ` в ${item.time}` : '');
+        const dateFormatted = formatDate(item.date) + (item.time ? ` в ${item.time}` : '');
         const card = document.createElement('div');
         card.className = `bg-white p-3.5 rounded-2xl border shadow-sm flex items-center justify-between gap-3 ${item.status === 'planned' ? 'border-dashed border-slate-300' : 'border-slate-100'}`;
         card.innerHTML = `
@@ -780,13 +809,11 @@
           </div>
           <button onclick="deleteDonation(${item.id})" class="text-slate-300 hover:text-red-500 p-1.5 transition-colors">
             <i data-lucide="trash-2" class="w-4 h-4"></i>
-          </button>
-        `;
+          </button>`;
         container.appendChild(card);
       });
     }
 
-    // Render Leaves List
     function renderLeavesList() {
       const container = document.getElementById('leave-list');
       container.innerHTML = '';
@@ -796,13 +823,12 @@
           <div class="text-center py-8 bg-white rounded-2xl border border-slate-100 text-slate-400">
             <i data-lucide="calendar-x" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
             <p class="text-xs">Вы еще не списывали отгулы</p>
-          </div>
-        `;
+          </div>`;
         return;
       }
 
       state.leaves.forEach(item => {
-        const dateFormatted = new Date(item.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+        const dateFormatted = formatDate(item.date);
         const card = document.createElement('div');
         card.className = "bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between gap-3";
         card.innerHTML = `
@@ -820,47 +846,39 @@
           </div>
           <button onclick="deleteLeave(${item.id})" class="text-slate-300 hover:text-red-500 p-1.5 transition-colors">
             <i data-lucide="trash-2" class="w-4 h-4"></i>
-          </button>
-        `;
+          </button>`;
         container.appendChild(card);
       });
     }
 
-    // Export Data JSON
-async function exportData() {
-  try {
-    const json = JSON.stringify(state, null, 2);
-    const fileName = `donor_backup_${new Date().toISOString().split('T')[0]}.json`;
-    const file = new File([json], fileName, {
-      type: 'application/json'
-    });
+    async function exportData() {
+      try {
+        const json = JSON.stringify(state, null, 2);
+        const fileName = `donor_backup_${new Date().toISOString().split('T')[0]}.json`;
+        const file = new File([json], fileName, { type: 'application/json' });
 
-    if (navigator.share && navigator.canShare &&
-        navigator.canShare({ files: [file] })) {
-      await navigator.share({
-  files: [file]
-});
-      showToast('Резервная копия готова');
-    } else {
-      const url = URL.createObjectURL(file);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-      showToast('Резервная копия подготовлена');
-    }
-  } catch (error) {
-    if (error.name !== 'AbortError') {
-      showToast('Не удалось создать копию');
-      console.error(error);
-    }
-  }
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file] });
+          showToast('Резервная копия готова');
+        } else {
+          const url = URL.createObjectURL(file);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          showToast('Резервная копия подготовлена');
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          showToast('Не удалось создать копию');
+          console.error(error);
+        }
+      }
     }
 
-    // Import Data JSON
     function importData(event) {
       const fileReader = new FileReader();
       fileReader.onload = function(e) {
@@ -877,16 +895,15 @@ async function exportData() {
           alert('Ошибка при чтении файла.');
         }
       };
-      if (event.target.files[0]) {
-        fileReader.readAsText(event.target.files[0]);
-      }
+      if (event.target.files[0]) fileReader.readAsText(event.target.files[0]);
+      event.target.value = '';
     }
 
-    // Utility: Safe Text HTML Escaping
     function escapeHtml(str) {
-      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
   </script>
+
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(err => console.error("Service worker registration failed", err)));
