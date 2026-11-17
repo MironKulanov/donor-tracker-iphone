@@ -1,4 +1,4 @@
-const CACHE_NAME = "donor-tracker-v3";
+const CACHE_NAME = "donor-tracker-v4";
 const APP_FILES = [
   "./",
   "./index.html",
